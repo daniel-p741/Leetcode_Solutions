@@ -23,14 +23,11 @@ class Solution:
             else:
                 grouplist.append(values)
 
-        def deencapsulate_lists(nested_list):
-            return [
-                item
-                for element in nested_list
-                for item in (element if isinstance(element[0], list) else [element])
-            ]
-
-        grouplist = deencapsulate_lists(grouplist)
+        grouplist = [
+            item
+            for element in grouplist
+            for item in (element if isinstance(element[0], list) else [element])
+        ]
 
         grouplist = sorted(grouplist, key=lambda x: (len(x), min(x)))
 
